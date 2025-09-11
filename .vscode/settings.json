@@ -1,0 +1,9 @@
+{
+  // GitHub Copilot Chat
+  "chat.promptFiles": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".copilot-commit-message-instructions.md"
+    }
+  ]
+}
