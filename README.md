@@ -88,6 +88,28 @@ TODO
 - **Testing**: Rate limiting disabled, optimized for testing, mock data
 - **Production**: HTTPS enforced, security headers, Redis required
 
+### API Endpoints
+
+#### Authentication Endpoints
+- `POST /auth/register` - Register new user (rate limited: 3/hour)
+- `POST /auth/login` - User login, returns JWT token
+- `POST /auth/refresh` - Refresh JWT token
+- `POST /auth/logout` - Invalidate current token
+- `GET /auth/me` - Get current user profile information
+
+#### Thought Diaries Endpoints
+- `GET /diaries` - List all thought diaries with pagination (protected)
+- `POST /diaries` - Create a new thought diary (protected)
+- `GET /diaries/{id}` - Get a specific thought diary (protected)
+- `PUT /diaries/{id}` - Update a specific thought diary (protected)
+- `DELETE /diaries/{id}` - Delete a specific thought diary (protected)
+- `GET /diaries/stats` - Get statistics about user's thought diaries (protected)
+
+#### System Endpoints
+- `GET /health` - Health check endpoint
+- `GET /version` - API version information
+- `GET /docs` - API documentation
+
 ## Setup
 1. Fork the repository: 
 - Please follow [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) to fork the repository to your GitHub account.
