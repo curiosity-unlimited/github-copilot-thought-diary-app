@@ -47,17 +47,10 @@ uv add python-dotenv
 ```env
 SECRET_KEY=your_secret_key
 ```
-4. Load those environment variables from the `.env` file, and add following content to `main.py` as an initial example while avoiding printing the secret key directly in the code:
-```python
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-secret_key = os.getenv("SECRET_KEY")
-```
+4. Load those environment variables from the `.env` file in `main.py` as an initial example.
 
 ## STEP 9: Generate `.gitignore` file content based on the project structure and best practices
-- Please reference [.gitignore templates for Python](https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore) from [GitHub's official repository](https://github.com/github/gitignore) for best practices, and generate `.gitignore` file content based on the project #codebase as well as those best practices while keeping specified files and folders tracked by git. Take `.vscode/` for example, following content should be generated in the `.gitignore` file (just comment out the entries, instead of using exclamation marks):
+- Please reference [.gitignore templates for Python](https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Python.gitignore) from [GitHub's official repository](https://github.com/github/gitignore) for best practices, and generate `.gitignore` file content based on the project #codebase as well as those best practices, while keeping specified files and folders tracked by git. Take `.vscode/` for example, following content should be generated in the `.gitignore` file (just comment out the entries, instead of using exclamation marks):
 ```markdown
 # IDEs
 # .vscode/
