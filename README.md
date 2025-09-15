@@ -92,7 +92,7 @@ TODO
 
 #### Authentication Endpoints
 - `POST /auth/register` - Register new user (rate limited: 3/hour)
-- `POST /auth/login` - User login, returns JWT token
+- `POST /auth/login` - User login, returns JWT token (rate limited: 5/15min)
 - `POST /auth/refresh` - Refresh JWT token
 - `POST /auth/logout` - Invalidate current token
 - `GET /auth/me` - Get current user profile information
