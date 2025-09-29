@@ -24,6 +24,18 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
   - Fields: email, password_hash, created_at, updated_at
   - Features: Email validation, password strength validation, secure hashing
 
+### Database Management
+- **Application Factory Pattern**: Implements Flask's application factory pattern for flexible configuration
+- **Database Initialization**: CLI command for database setup and initialization
+  ```bash
+  uv run flask init-db
+  ```
+- **Environment-Specific Configuration**:
+  - Development: SQLite database for simplicity and ease of setup
+  - Production: PostgreSQL with connection pooling for performance and reliability
+- **Connection Management**: Proper session handling to prevent connection leaks
+- **Migration Support**: Database schema versioning through Alembic (SQLAlchemy migrations)
+
 ### Frontend Technologies
 TODO
 
