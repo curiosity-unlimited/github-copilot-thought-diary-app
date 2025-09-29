@@ -41,6 +41,40 @@ Passwords must meet the following requirements:
 - At least one number
 - At least one special character
 
+#### Relationships
+
+| Relationship Name | Related Model   | Type          | Description                                     |
+|-------------------|----------------|---------------|--------------------------------------------------|
+| thought_diaries   | ThoughtDiary   | One-to-many   | User's thought diary entries                     |
+
+### ThoughtDiary
+
+The `ThoughtDiary` model is responsible for storing user thoughts and their analysis.
+
+#### Fields
+
+| Field Name       | Type         | Description                                  | Constraints           |
+|------------------|--------------|----------------------------------------------|----------------------|
+| id               | Integer      | Primary key for thought diary entry          | Primary key, auto-increment |
+| user_id          | Integer      | Foreign key to User model                    | Foreign key, not null, indexed |
+| content          | Text         | Original content of the thought diary entry  | Not null              |
+| analyzed_content | Text         | Analyzed/processed content of the entry      | Nullable              |
+| created_at       | DateTime     | Timestamp when entry was created             | Not null, default now |
+| updated_at       | DateTime     | Timestamp when entry was last updated        | Not null, default now, auto-update |
+
+#### Methods
+
+| Method Name      | Parameters                          | Return Type        | Description                                     |
+|------------------|-------------------------------------|--------------------|-------------------------------------------------|
+| find_by_user_id  | user_id (int), limit (int), offset (int) | list[ThoughtDiary] | Class method to find entries by user ID with pagination |
+| find_by_id       | id (int)                           | ThoughtDiary/None  | Class method to find an entry by ID             |
+
+#### Relationships
+
+| Relationship Name | Related Model   | Type          | Description                                     |
+|-------------------|----------------|---------------|--------------------------------------------------|
+| user              | User           | Many-to-one   | User who created this thought diary entry        |
+
 ## Database Configuration
 
 The database configuration is handled in `app/database/config.py` and uses environment variables to determine which database to connect to.

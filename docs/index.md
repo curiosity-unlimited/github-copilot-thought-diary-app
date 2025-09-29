@@ -29,7 +29,8 @@ thought-diary-app/
 │   │   └── config.py       # Database connection configuration
 │   ├── models/             # Database models
 │   │   ├── __init__.py
-│   │   └── user.py         # User model definition
+│   │   ├── user.py         # User model definition
+│   │   └── thought_diary.py # ThoughtDiary model definition
 │   └── __init__.py         # Application factory pattern implementation
 ├── docs/                   # Documentation files
 │   ├── index.md            # This file

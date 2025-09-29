@@ -2,11 +2,11 @@
 User model definition for the Thought Diary application.
 """
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 import bcrypt
 import re
 from sqlalchemy import String, DateTime, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from email_validator import validate_email, EmailNotValidError
 
 from app.database.config import db
@@ -38,6 +38,9 @@ class User(db.Model):
         onupdate=func.now(),
         nullable=False
     )
+    
+    # Define relationship with ThoughtDiary model
+    thought_diaries = relationship("ThoughtDiary", back_populates="user", cascade="all, delete-orphan")
     
     def __repr__(self) -> str:
         """Provide a string representation of the User model.

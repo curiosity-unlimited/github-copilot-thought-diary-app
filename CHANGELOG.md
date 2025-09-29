@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-09-29
+
+### Added
+- Created ThoughtDiary model with user relationship, content, analyzed_content, and timestamps
+- Added bidirectional relationship between User and ThoughtDiary models
+- Updated database configuration to register the new ThoughtDiary model
+- Updated documentation in /docs to reflect the new ThoughtDiary model
+- Updated README.md with ThoughtDiary model information
+
 ## [0.2.1] - 2025-09-29
 
 ### Fixed

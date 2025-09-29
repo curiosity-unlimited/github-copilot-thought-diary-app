@@ -23,6 +23,9 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
 - **User**: Authentication model with secure password handling using bcrypt
   - Fields: email, password_hash, created_at, updated_at
   - Features: Email validation, password strength validation, secure hashing
+- **ThoughtDiary**: Model for storing and analyzing user thought diary entries
+  - Fields: user_id, content, analyzed_content, created_at, updated_at
+  - Features: Relationship with User model, pagination support, sentiment analysis storage
 
 ### Database Management
 - **Application Factory Pattern**: Implements Flask's application factory pattern for flexible configuration

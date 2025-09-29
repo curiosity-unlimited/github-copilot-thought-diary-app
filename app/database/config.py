@@ -31,6 +31,7 @@ def init_db(app) -> None:
     
     # Import models to ensure they are registered with SQLAlchemy
     from app.models.user import User  # noqa
+    from app.models.thought_diary import ThoughtDiary  # noqa
 
 
 def get_database_url() -> str:
