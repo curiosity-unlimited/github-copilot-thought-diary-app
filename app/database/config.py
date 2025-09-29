@@ -39,6 +39,15 @@ def get_database_url() -> str:
     Returns:
         The database URL string
     """
+    # Check environment setting first
+    env = os.getenv("ENV", "development").lower()
+    
+    # Use SQLite for development and testing environments
+    if env in ["development", "testing"]:
+        db_path = os.getenv("SQLITE_PATH", "thought_diary.db")
+        return f"sqlite:///{db_path}"
+    
+    # For production, use PostgreSQL if configured
     db_user: Optional[str] = os.getenv("DB_USER")
     db_password: Optional[str] = os.getenv("DB_PASSWORD")
     db_host: Optional[str] = os.getenv("DB_HOST")
@@ -49,6 +58,6 @@ def get_database_url() -> str:
     if all([db_user, db_password, db_host, db_port, db_name]):
         return f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     
-    # Default to SQLite for development
+    # Fall back to SQLite if PostgreSQL is not configured
     db_path = os.getenv("SQLITE_PATH", "thought_diary.db")
     return f"sqlite:///{db_path}"

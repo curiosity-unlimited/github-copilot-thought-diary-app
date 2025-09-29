@@ -59,5 +59,13 @@ The database configuration is handled in `app/database/config.py` and uses envir
 ### Connection Logic
 
 The application uses the following logic to determine which database to connect to:
-1. If all PostgreSQL environment variables are set (`DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`), it uses PostgreSQL.
-2. Otherwise, it falls back to SQLite using the path specified in `SQLITE_PATH` (defaults to `thought_diary.db` if not set).
+
+1. First, it checks the `ENV` environment variable:
+   - If `ENV` is set to `development` or `testing`, it always uses SQLite
+   - If `ENV` is set to `production`, it attempts to use PostgreSQL
+
+2. For production environments:
+   - If all PostgreSQL environment variables are set (`DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`), it uses PostgreSQL
+   - Otherwise, it falls back to SQLite using the path specified in `SQLITE_PATH`
+
+3. The SQLite database path is specified by the `SQLITE_PATH` environment variable (defaults to `thought_diary.db` if not set)

@@ -4,10 +4,20 @@ Welcome to the Thought Diary App documentation. This documentation provides deta
 
 ## Table of Contents
 
-1. [Database Documentation](database.md)
+1. [Application Structure](application.md)
+   - Application Factory Pattern
+   - Running the Application
+   - Environment-Specific Configuration
+
+2. [Database Documentation](database.md)
    - Models
    - Configuration
    - Environment Variables
+   
+3. [Usage Guide](usage.md)
+   - Initializing the Database
+   - Running the Development Server
+   - Production Deployment
 
 ## Project Structure
 
@@ -20,13 +30,14 @@ thought-diary-app/
 │   ├── models/             # Database models
 │   │   ├── __init__.py
 │   │   └── user.py         # User model definition
-│   └── __init__.py
+│   └── __init__.py         # Application factory pattern implementation
 ├── docs/                   # Documentation files
 │   ├── index.md            # This file
 │   └── database.md         # Database documentation
 ├── .env                    # Environment variables (not in version control)
 ├── .env.example            # Example environment variables
-├── main.py                 # Application entry point
+├── main.py                 # CLI utility entry point
+├── wsgi.py                 # WSGI entry point for Flask application
 ├── pyproject.toml          # Project metadata and dependencies
 └── README.md               # Project overview and setup instructions
 ```

@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-09-29
+
+### Fixed
+- Fixed database URL selection logic to properly respect the ENV variable
+- Added psycopg2-binary dependency for PostgreSQL support
+- Updated documentation to reflect the correct database connection logic
+
+## [0.2.0] - 2025-09-29
+
+### Added
+- Implemented Flask application factory pattern in app/__init__.py
+- Added Flask CLI command for database initialization (init-db)
+- Created WSGI entry point for the Flask application
+- Updated main.py to provide command-line utilities
+- Added application structure documentation
+
 ## [0.1.0] - 2025-09-29
 
 ### Added
