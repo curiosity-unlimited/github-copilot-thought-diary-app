@@ -19,6 +19,11 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
 - **Testing**: Pytest with 80%+ coverage requirement
 - **Documentation**: Type hints (PEP 484), comprehensive docstrings
 
+### Data Models
+- **User**: Authentication model with secure password handling using bcrypt
+  - Fields: email, password_hash, created_at, updated_at
+  - Features: Email validation, password strength validation, secure hashing
+
 ### Frontend Technologies
 TODO
 
