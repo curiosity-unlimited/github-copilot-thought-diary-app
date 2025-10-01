@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2] - 2025-10-01
+
+### Added
+- Created comprehensive test suite for models, routes, and application
+- Implemented tests for User model (creation, password hashing, validation)
+- Implemented tests for ThoughtDiary model (CRUD operations, relationships)
+- Updated pytest configuration for consistent test discovery and execution
+- Added model-specific test modules in the tests/models directory
+
 ## [0.4.1] - 2025-10-01
 
 ### Added
