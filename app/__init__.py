@@ -77,23 +77,12 @@ def create_app(test_config=None):
     # Register CLI commands
     register_cli_commands(app)
     
-    # Add basic routes
-    @app.route('/health')
-    def health_check():
-        """Health check endpoint."""
-        return {'status': 'healthy'}, 200
-    
-    @app.route('/version')
-    def version():
-        """Version information endpoint."""
-        return {
-            'version': '0.1.0',
-            'environment': app.config.get('ENV')
-        }, 200
-    
     # Register blueprints
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    
+    from app.system import bp as system_bp
+    app.register_blueprint(system_bp)
     
     return app
 

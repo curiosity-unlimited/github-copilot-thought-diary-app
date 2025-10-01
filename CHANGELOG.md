@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2025-10-01
+
+### Added
+- Created system blueprint for system endpoints
+- Moved health and version endpoints from app factory to system blueprint
+- Added API documentation endpoint at /docs with support for HTML and JSON formats
+- Enhanced health endpoint to check database connection status
+
 ## [0.4.0] - 2025-10-01
 
 ### Added

@@ -17,4 +17,5 @@ dependencies = [
     "flask-limiter>=4.0.0",
     "flask-marshmallow>=1.3.0",
     "marshmallow-sqlalchemy>=1.4.2",
+    "tomli>=2.2.1",
 ]
