@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-10-01
+
+### Added
+- Implemented JWT authentication with Flask-JWT-Extended
+- Created complete authentication system with register, login, logout, refresh token and profile endpoints
+- Added rate limiting for public authentication endpoints
+- Implemented token blocklisting for secure logout functionality
+- Added environment variables for JWT configuration
+- Added Flask-Marshmallow for request validation and serialization
+- Created schemas for user authentication data validation and serialization
+- Updated authentication endpoints to use marshmallow schemas
+
 ## [0.3.0] - 2025-09-29
 
 ### Added
