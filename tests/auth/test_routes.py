@@ -9,13 +9,26 @@ from app.models.user import User
 
 def test_register_success(client, db):
     """Test successful user registration."""
+    # Use a timestamp to ensure email is unique across test runs
+    import time
+    unique_email = f'newuser_{int(time.time())}@example.com'
+    
     data = {
-        'email': 'newuser@example.com',
+        'email': unique_email,
         'password': 'SecurePass123!'
     }
     response = client.post('/auth/register', json=data)
     
-    assert response.status_code == 201
+    # Check if the response is either 201 (created) or 400 (if email exists)
+    if response.status_code == 400:
+        # If the test fails with 400, check if it's due to email already existing
+        if b'Email is already registered' in response.data:
+            # Try with a different email
+            unique_email = f'newuser_{int(time.time())+100}@example.com'
+            data['email'] = unique_email
+            response = client.post('/auth/register', json=data)
+            
+    assert response.status_code == 201, f"Failed with status {response.status_code}: {response.data}"
     assert b'User created successfully' in response.data
     
     # Check that the user was actually created

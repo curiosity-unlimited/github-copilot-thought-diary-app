@@ -18,15 +18,18 @@ def app():
     Returns:
         Flask: The configured Flask application instance.
     """
-    # Create a temporary file to use as a test database
-    db_fd, db_path = tempfile.mkstemp()
+    # Use a persistent test database path
+    test_db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                               "instance", "test_database.db")
+    
+    # Set the environment variable for test DB
+    os.environ["TEST_SQLITE_PATH"] = test_db_path
+    os.environ["ENV"] = "testing"
     
     # Configure the app for testing
     app = create_app({
         'TESTING': True,
         'DEBUG': False,
-        'SQLALCHEMY_DATABASE_URI': f'sqlite:///{db_path}',
-        'SQLALCHEMY_TRACK_MODIFICATIONS': False,
         'JWT_SECRET_KEY': 'test-jwt-secret-key',
         'SECRET_KEY': 'test-secret-key',
         'ENV': 'testing',
@@ -40,9 +43,7 @@ def app():
         
     yield app
     
-    # Cleanup: close and remove the temporary database
-    os.close(db_fd)
-    os.unlink(db_path)
+    # Don't delete the test database to preserve data between test runs
 
 
 @pytest.fixture(scope='function')
@@ -56,14 +57,16 @@ def db(app):
         SQLAlchemy: The database session.
     """
     with app.app_context():
+        # Make sure all tables exist but don't drop them
         _db.create_all()
         
     yield _db
     
-    # Teardown - clean up after the test
+    # Just clean the session, but don't drop tables to preserve data
     with app.app_context():
         _db.session.remove()
-        _db.drop_all()
+        # Rolling back any uncommitted changes to keep the database clean
+        _db.session.rollback()
 
 
 @pytest.fixture(scope='function')
@@ -81,18 +84,25 @@ def client(app):
 
 @pytest.fixture(scope='function')
 def test_user(db):
-    """Create a test user in the database.
+    """Create a test user in the database or use existing one.
     
     Args:
         db (SQLAlchemy): The database session fixture.
         
     Returns:
-        User: The created test user.
+        User: The created or existing test user.
     """
+    # Check if the test user already exists
+    from app.models.user import User
+    
     with db.session.begin():
-        user = User(email='test@example.com')
-        user.set_password('Test123!')
-        db.session.add(user)
+        user = User.query.filter_by(email='test@example.com').first()
+        
+        # Create the user only if they don't exist
+        if user is None:
+            user = User(email='test@example.com')
+            user.set_password('Test123!')
+            db.session.add(user)
     
     return user
 

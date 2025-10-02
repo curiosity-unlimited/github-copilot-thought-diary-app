@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2025-10-02
+
+### Changed
+- Modified test database configuration to use a persistent database
+- Fixed issue with data loss during test runs by maintaining test data between runs
+- Added `clean-test-db` CLI command for optional test database cleanup
+- Updated environment variables with `TEST_SQLITE_PATH` for configuring test database location
+- Enhanced documentation with test database management instructions
+- Improved test user fixture to reuse existing test users instead of recreating them
+
 ## [0.5.0] - 2025-10-02
 
 ### Added

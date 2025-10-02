@@ -11,10 +11,20 @@ from app.models.user import User
 def test_thought_diary_creation(db):
     """Test creating a thought diary entry."""
     # First create a user to associate with the diary entry
-    user = User(email='user@example.com')
-    user.set_password('SecurePass123!')
-    db.session.add(user)
-    db.session.commit()
+    import time
+    unique_email = f'diary_user_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use the existing user
+        user = existing_user
+    else:
+        # Create a new user
+        user = User(email=unique_email)
+        user.set_password('SecurePass123!')
+        db.session.add(user)
+        db.session.commit()
     
     # Create a thought diary entry
     diary = ThoughtDiary(
@@ -39,11 +49,21 @@ def test_thought_diary_creation(db):
 
 def test_thought_diary_find_by_id(db):
     """Test finding a thought diary entry by ID."""
-    # Create a user
-    user = User(email='find@example.com')
-    user.set_password('SecurePass123!')
-    db.session.add(user)
-    db.session.commit()
+    # Create a user with unique email
+    import time
+    unique_email = f'find_diary_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use the existing user
+        user = existing_user
+    else:
+        # Create a new user
+        user = User(email=unique_email)
+        user.set_password('SecurePass123!')
+        db.session.add(user)
+        db.session.commit()
     
     # Create a thought diary entry
     diary = ThoughtDiary(
@@ -67,11 +87,21 @@ def test_thought_diary_find_by_id(db):
 
 def test_thought_diary_find_all_by_user_id(db):
     """Test finding all thought diary entries for a user."""
-    # Create a user
-    user = User(email='multiple@example.com')
-    user.set_password('SecurePass123!')
-    db.session.add(user)
-    db.session.commit()
+    # Create a user with unique email
+    import time
+    unique_email = f'multiple_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use the existing user
+        user = existing_user
+    else:
+        # Create a new user
+        user = User(email=unique_email)
+        user.set_password('SecurePass123!')
+        db.session.add(user)
+        db.session.commit()
     
     # Create multiple thought diary entries
     diary1 = ThoughtDiary(
@@ -94,10 +124,16 @@ def test_thought_diary_find_all_by_user_id(db):
     assert any('Social gathering' in entry.content for entry in entries)
     
     # Test user with no entries
-    other_user = User(email='noentries@example.com')
-    other_user.set_password('SecurePass123!')
-    db.session.add(other_user)
-    db.session.commit()
+    unique_email = f'noentries_{int(time.time())}@example.com'
+    existing_user = User.query.filter_by(email=unique_email).first()
+    
+    if existing_user:
+        other_user = existing_user
+    else:
+        other_user = User(email=unique_email)
+        other_user.set_password('SecurePass123!')
+        db.session.add(other_user)
+        db.session.commit()
     
     no_entries = ThoughtDiary.find_by_user_id(other_user.id)
     assert len(no_entries) == 0
@@ -120,10 +156,20 @@ def test_thought_diary_representation():
 
 def test_thought_diary_timestamps(db):
     """Test that timestamps are set correctly."""
-    user = User(email='timestamps@example.com')
-    user.set_password('SecurePass123!')
-    db.session.add(user)
-    db.session.commit()
+    import time
+    unique_email = f'timestamps_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use the existing user
+        user = existing_user
+    else:
+        # Create a new user
+        user = User(email=unique_email)
+        user.set_password('SecurePass123!')
+        db.session.add(user)
+        db.session.commit()
     
     diary = ThoughtDiary(
         user_id=user.id,
@@ -143,10 +189,20 @@ def test_thought_diary_timestamps(db):
 
 def test_thought_diary_update(db):
     """Test updating a thought diary entry."""
-    user = User(email='update@example.com')
-    user.set_password('SecurePass123!')
-    db.session.add(user)
-    db.session.commit()
+    import time
+    unique_email = f'update_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use the existing user
+        user = existing_user
+    else:
+        # Create a new user
+        user = User(email=unique_email)
+        user.set_password('SecurePass123!')
+        db.session.add(user)
+        db.session.commit()
     
     diary = ThoughtDiary(
         user_id=user.id,

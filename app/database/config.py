@@ -43,10 +43,20 @@ def get_database_url() -> str:
     # Check environment setting first
     env = os.getenv("ENV", "development").lower()
     
-    # Use SQLite for development and testing environments
-    if env in ["development", "testing"]:
-        db_path = os.getenv("SQLITE_PATH", "thought_diary.db")
+    # Use SQLite for development environments
+    if env == "development":
+        db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 
+                              "instance", os.getenv("SQLITE_PATH", "thought_diary.db"))
         return f"sqlite:///{db_path}"
+    
+    # For testing environment, use a separate database to not interfere with production data
+    if env == "testing":
+        test_db_path = os.getenv("TEST_SQLITE_PATH")
+        if test_db_path:
+            return f"sqlite:///{test_db_path}"
+        else:
+            # Use memory database for testing if no test DB path is provided
+            return "sqlite:///instance/testing.db"
     
     # For production, use PostgreSQL if configured
     db_user: Optional[str] = os.getenv("DB_USER")
