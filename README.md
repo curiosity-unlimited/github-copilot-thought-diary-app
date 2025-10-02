@@ -54,7 +54,7 @@ TODO
 - Users can edit and delete thought diaries from the list.
 
 ### AI-Powered Sentiment Analysis
-- The app leverages [model inference from GitHub Models](https://docs.github.com/en/rest/models/inference?apiVersion=2022-11-28) to analyze thought diaries.
+- The app leverages [model inference from GitHub Models](https://docs.github.com/en/rest/models/inference?apiVersion=2022-11-28#run-an-inference-request) to analyze thought diaries.
 - Words and phrases are marked for positive/negative thinking and feelings with green/red background colors.
     - For example, when a user adds or edits a thought diary:
         ```text

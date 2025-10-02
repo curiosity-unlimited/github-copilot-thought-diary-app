@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2025-10-02
+
+### Added
+- Implemented AI-powered sentiment analysis using GitHub Models inference API
+- Created services package structure for extensible application services
+- Added GitHubModelsService for interacting with GitHub Models API
+- Created SentimentAnalyzer facade for easy integration with application components
+- Updated environment configuration for GitHub API credentials
+- Added sentiment analysis capability to mark positive/negative expressions in thought diaries
+- Added comprehensive test suite for sentiment analysis services
+- Created documentation for sentiment analysis features in docs/sentiment_analysis.md
+- Added environment variable configuration options for GitHub Models inference:
+  - `GITHUB_API_KEY` for interacting with GitHub Models API
+  - `GITHUB_MODEL` for configuring the inference model
+  - `GITHUB_MAX_TOKENS` for setting maximum response token length
+
 ## [0.4.2] - 2025-10-01
 
 ### Added
