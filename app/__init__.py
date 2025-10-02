@@ -103,3 +103,14 @@ def register_cli_commands(app):
         with app.app_context():
             db.create_all()
             print('Database tables created successfully!')
+            
+    @app.cli.command('clean-test-db')
+    def clean_test_db_command():
+        """Clean the test database by dropping and recreating all tables."""
+        if app.config.get('ENV') == 'testing':
+            with app.app_context():
+                db.drop_all()
+                db.create_all()
+                print('Test database has been cleaned successfully!')
+        else:
+            print('This command can only be run in the testing environment.')

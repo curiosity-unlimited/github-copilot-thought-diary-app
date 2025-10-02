@@ -22,11 +22,21 @@ class TestThoughtDiaryAnalyzeContent:
         )
         mock_get_instance.return_value = mock_analyzer
         
-        # Create a user and thought diary
-        user = User(email='analyzer_test@example.com')
-        user.set_password('SecurePass123!')
-        db.session.add(user)
-        db.session.commit()
+        # Create a user with unique email
+        import time
+        unique_email = f'analyzer_test_{int(time.time())}@example.com'
+        
+        # Check if a user with this email already exists
+        existing_user = User.query.filter_by(email=unique_email).first()
+        if existing_user:
+            # Use the existing user
+            user = existing_user
+        else:
+            # Create a new user
+            user = User(email=unique_email)
+            user.set_password('SecurePass123!')
+            db.session.add(user)
+            db.session.commit()
         
         diary = ThoughtDiary(
             user_id=user.id,
@@ -57,11 +67,21 @@ class TestThoughtDiaryAnalyzeContent:
         mock_analyzer.is_available.return_value = False
         mock_get_instance.return_value = mock_analyzer
         
-        # Create a user and thought diary
-        user = User(email='unavailable_service@example.com')
-        user.set_password('SecurePass123!')
-        db.session.add(user)
-        db.session.commit()
+        # Create a user with unique email
+        import time
+        unique_email = f'unavailable_{int(time.time())}@example.com'
+        
+        # Check if a user with this email already exists
+        existing_user = User.query.filter_by(email=unique_email).first()
+        if existing_user:
+            # Use the existing user
+            user = existing_user
+        else:
+            # Create a new user
+            user = User(email=unique_email)
+            user.set_password('SecurePass123!')
+            db.session.add(user)
+            db.session.commit()
         
         diary = ThoughtDiary(
             user_id=user.id,
@@ -87,11 +107,21 @@ class TestThoughtDiaryAnalyzeContent:
         mock_analyzer.analyze.return_value = (None, "API Error")
         mock_get_instance.return_value = mock_analyzer
         
-        # Create a user and thought diary
-        user = User(email='analysis_error@example.com')
-        user.set_password('SecurePass123!')
-        db.session.add(user)
-        db.session.commit()
+        # Create a user with unique email
+        import time
+        unique_email = f'analysis_error_{int(time.time())}@example.com'
+        
+        # Check if a user with this email already exists
+        existing_user = User.query.filter_by(email=unique_email).first()
+        if existing_user:
+            # Use the existing user
+            user = existing_user
+        else:
+            # Create a new user
+            user = User(email=unique_email)
+            user.set_password('SecurePass123!')
+            db.session.add(user)
+            db.session.commit()
         
         diary = ThoughtDiary(
             user_id=user.id,
@@ -115,11 +145,21 @@ class TestThoughtDiaryAnalyzeContent:
         mock_analyzer = MagicMock()
         mock_get_instance.return_value = mock_analyzer
         
-        # Create a user and thought diary
-        user = User(email='empty_content@example.com')
-        user.set_password('SecurePass123!')
-        db.session.add(user)
-        db.session.commit()
+        # Create a user with unique email
+        import time
+        unique_email = f'empty_content_{int(time.time())}@example.com'
+        
+        # Check if a user with this email already exists
+        existing_user = User.query.filter_by(email=unique_email).first()
+        if existing_user:
+            # Use the existing user
+            user = existing_user
+        else:
+            # Create a new user
+            user = User(email=unique_email)
+            user.set_password('SecurePass123!')
+            db.session.add(user)
+            db.session.commit()
         
         diary = ThoughtDiary(
             user_id=user.id,

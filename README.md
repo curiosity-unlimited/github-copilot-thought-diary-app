@@ -35,9 +35,15 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
   ```
 - **Environment-Specific Configuration**:
   - Development: SQLite database for simplicity and ease of setup
+  - Testing: Persistent SQLite database to preserve test data between test runs
   - Production: PostgreSQL with connection pooling for performance and reliability
 - **Connection Management**: Proper session handling to prevent connection leaks
 - **Migration Support**: Database schema versioning through Alembic (SQLAlchemy migrations)
+- **Test Database Management**: Separate persistent test database that preserves data between test runs
+  ```bash
+  # Optional: Clean test database if needed
+  ENV=testing uv run flask clean-test-db
+  ```
 
 ### Frontend Technologies
 TODO
@@ -160,6 +166,24 @@ TODO
     ```
     /init-python-project-with-uv
     ```
+
+## Running Tests
+
+The application uses pytest for testing. The test environment is configured to use a persistent SQLite database located at `instance/test_database.db`. This approach preserves test data between test runs, allowing you to:
+
+1. Run tests without losing previously created data
+2. Examine test data after running tests
+3. Manually inspect the test database state
+
+To run the tests:
+```bash
+uv run pytest
+```
+
+If you need to clean the test database and start fresh:
+```bash
+ENV=testing uv run flask clean-test-db
+```
 
 ## License
 

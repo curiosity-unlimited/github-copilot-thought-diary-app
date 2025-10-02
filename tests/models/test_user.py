@@ -9,15 +9,25 @@ from email_validator import EmailNotValidError
 
 def test_user_creation(db):
     """Test creating a user instance."""
-    user = User(email='user@example.com')
+    # Use a timestamp to ensure email is unique across test runs
+    import time
+    unique_email = f'user_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use a different email
+        unique_email = f'user_{int(time.time())+100}@example.com'
+    
+    user = User(email=unique_email)
     user.set_password('SecurePass123!')
     
     db.session.add(user)
     db.session.commit()
     
-    retrieved_user = User.query.filter_by(email='user@example.com').first()
+    retrieved_user = User.query.filter_by(email=unique_email).first()
     assert retrieved_user is not None
-    assert retrieved_user.email == 'user@example.com'
+    assert retrieved_user.email == unique_email
     assert retrieved_user.password_hash is not None
     assert retrieved_user.created_at is not None
     assert retrieved_user.updated_at is not None
@@ -81,16 +91,26 @@ def test_password_validation():
 
 def test_find_by_email(db):
     """Test finding a user by email."""
-    user = User(email='find@example.com')
+    # Use a timestamp to ensure email is unique across test runs
+    import time
+    unique_email = f'find_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use a different email
+        unique_email = f'find_{int(time.time())+100}@example.com'
+    
+    user = User(email=unique_email)
     user.set_password('SecurePass123!')
     
     db.session.add(user)
     db.session.commit()
     
     # Test finding an existing user
-    found_user = User.find_by_email('find@example.com')
+    found_user = User.find_by_email(unique_email)
     assert found_user is not None
-    assert found_user.email == 'find@example.com'
+    assert found_user.email == unique_email
     
     # Test finding a non-existent user
     not_found = User.find_by_email('nonexistent@example.com')
@@ -108,7 +128,17 @@ def test_user_representation():
 
 def test_user_created_at_defaults_to_current_time(db):
     """Test that created_at defaults to the current time."""
-    user = User(email='timestamp@example.com')
+    # Use a timestamp to ensure email is unique across test runs
+    import time
+    unique_email = f'timestamp_{int(time.time())}@example.com'
+    
+    # Check if a user with this email already exists
+    existing_user = User.query.filter_by(email=unique_email).first()
+    if existing_user:
+        # Use a different email
+        unique_email = f'timestamp_{int(time.time())+100}@example.com'
+    
+    user = User(email=unique_email)
     user.set_password('SecurePass123!')
     
     db.session.add(user)
