@@ -14,6 +14,10 @@ from flask_limiter.util import get_remote_address
 from app.database.config import init_db, db
 from app.schemas import init_ma
 
+# Ensure environment variables are loaded
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def create_app(test_config=None):
     """Create and configure the Flask application instance.

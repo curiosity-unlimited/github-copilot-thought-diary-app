@@ -2,12 +2,13 @@
 ThoughtDiary model definition for the Thought Diary application.
 """
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Tuple
 from sqlalchemy import String, Text, DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.config import db
 from app.models.user import User
+from app.services.analyzer import SentimentAnalyzer
 
 
 class ThoughtDiary(db.Model):
@@ -75,3 +76,29 @@ class ThoughtDiary(db.Model):
             Optional[ThoughtDiary]: The entry if found, None otherwise
         """
         return cls.query.get(id)
+        
+    def analyze_content(self) -> Tuple[bool, Optional[str]]:
+        """Analyze the content using sentiment analysis.
+        
+        This method sends the content to the sentiment analysis service
+        and updates the analyzed_content field with the result.
+        
+        Returns:
+            Tuple[bool, Optional[str]]: A tuple containing:
+                - Success flag (True if analysis was successful, False otherwise)
+                - Error message if any (None if successful)
+        """
+        if not self.content:
+            return False, "No content to analyze"
+            
+        analyzer = SentimentAnalyzer.get_instance()
+        if not analyzer.is_available():
+            return False, "Sentiment analysis service is not available"
+            
+        analyzed_text, error = analyzer.analyze(self.content)
+        
+        if error or not analyzed_text:
+            return False, error or "Failed to analyze content"
+            
+        self.analyzed_content = analyzed_text
+        return True, None
