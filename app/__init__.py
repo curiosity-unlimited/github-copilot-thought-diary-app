@@ -88,6 +88,9 @@ def create_app(test_config=None):
     from app.system import bp as system_bp
     app.register_blueprint(system_bp)
     
+    from app.diaries import bp as diaries_bp
+    app.register_blueprint(diaries_bp, url_prefix='/diaries')
+    
     return app
 
 

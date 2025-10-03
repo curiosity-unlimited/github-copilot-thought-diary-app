@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2025-10-03
+
+### Added
+- Implemented complete Thought Diary API with CRUD operations
+- Created new `diaries` blueprint for Thought Diary-related endpoints
+- Added Marshmallow schemas for Thought Diary model serialization and validation
+- Integrated sentiment analysis with Thought Diary API for automatic content analysis
+- Implemented the following API endpoints:
+  - `GET /diaries` - List all thought diaries with pagination
+  - `POST /diaries` - Create a new thought diary with sentiment analysis
+  - `GET /diaries/{id}` - Get a specific thought diary
+  - `PUT /diaries/{id}` - Update a thought diary with refreshed sentiment analysis
+  - `DELETE /diaries/{id}` - Delete a thought diary
+  - `GET /diaries/stats` - Get statistics about user's thought diaries
+- Added comprehensive test suite for all Thought Diary API endpoints
+- Implemented diary statistics tracking (total entries, sentiment distribution, etc.)
+- Ensured all API endpoints are secured with JWT authentication
+
 ## [0.5.1] - 2025-10-02
 
 ### Changed

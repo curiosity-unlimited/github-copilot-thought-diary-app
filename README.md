@@ -16,8 +16,11 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
 ### Backend Technologies (`./`)
 - **Runtime**: Python 3.11+ with Flask framework
 - **Database**: SQLAlchemy ORM with SQLite (development) / PostgreSQL (production)
+- **API**: RESTful API with JSON serialization using Flask-Marshmallow
+- **Authentication**: JWT-based authentication with refresh token support
+- **AI Integration**: Sentiment analysis of thought diary entries using GitHub Models API
 - **Testing**: Pytest with 80%+ coverage requirement
-- **Documentation**: Type hints (PEP 484), comprehensive docstrings
+- **Documentation**: Type hints (PEP 484), comprehensive docstrings and API documentation
 
 ### Data Models
 - **User**: Authentication model with secure password handling using bcrypt
@@ -135,6 +138,16 @@ TODO
 - `GET /health` - Health check endpoint
 - `GET /version` - API version information
 - `GET /docs` - API documentation
+
+## API Documentation
+
+Comprehensive API documentation is available in the `docs/` directory:
+
+- [API Overview](docs/diaries.md) - General API information and usage
+- [Authentication](docs/authentication.md) - Authentication endpoints and token management
+- [Sentiment Analysis](docs/sentiment_analysis.md) - AI-powered sentiment analysis details
+
+A ready-to-use [Postman collection](docs/thought_diary_api.postman_collection.json) is also available for testing the API endpoints.
 
 ## Setup
 1. Fork the repository: 
