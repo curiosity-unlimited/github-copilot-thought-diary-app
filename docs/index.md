@@ -13,8 +13,23 @@ Welcome to the Thought Diary App documentation. This documentation provides deta
    - Models
    - Configuration
    - Environment Variables
+
+3. [Authentication](authentication.md)
+   - JWT Authentication
+   - User Registration
+   - Login and Token Management
    
-3. [Usage Guide](usage.md)
+4. [Thought Diary API](diaries.md)
+   - Endpoints
+   - Request/Response Formats
+   - Authentication Requirements
+   
+5. [Sentiment Analysis](sentiment_analysis.md)
+   - GitHub Models API Integration
+   - Content Analysis
+   - Displaying Analyzed Content
+   
+6. [Usage Guide](usage.md)
    - Initializing the Database
    - Running the Development Server
    - Production Deployment
