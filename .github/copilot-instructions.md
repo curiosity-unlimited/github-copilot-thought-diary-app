@@ -83,3 +83,51 @@
 - Place all test files in the `tests/` directory to maintain a consistent structure.
 - Mirror the source code directory structure within the `tests/` directory. For example, for the source file `utils/password.py`, the corresponding test file should be `tests/utils/test_password.py`.
 - Ensure 80%+ test coverage requirement.
+
+## Guidelines for FRONTEND
+
+- All frontend code should be under the `./frontend` directory.
+
+### TYPESCRIPT
+
+- Use ESLint and Prettier for linting and formatting.
+- Always enable `strict` mode in `tsconfig.json` for maximum type safety.
+- Use interfaces or type aliases for complex prop and state shapes.
+- Use TSDoc comments for all public functions, classes, and interfaces.
+- Include examples in comments where applicable.
+- Use Vite with optimized production builds and hot reload.
+- Use `npm` for package management.
+- Use `npm install <package-name>` to add new dependencies and `npm install <package-name> --save-dev` for development dependencies, and make sure `package.json` and `package-lock.json` are updated accordingly.
+- Keep dependencies up to date and avoid unnecessary packages.
+
+### VUE 3
+
+- Use TypeScript for all code.
+- Follow Vue 3 Composition API best practices with `<script setup>` syntax.
+- Use Pinia for state management with TypeScript support.
+- Follow component-based architecture with proper separation of concerns.
+- Implement lazy loading with dynamic imports for route components to improve performance.
+- Follow accessibility best practices (WCAG 2.1 AA compliance).
+- Use `<style scoped>` for component-level styles or CSS Modules.
+- Implement responsive design with Tailwind CSS.
+
+### Frontend Testing Requirements
+- Use `Vitest` for unit testing framework.
+- Use `Cypress` for end-to-end testing.
+- Include comprehensive component tests for new Vue components.
+- Test Pinia stores and composables thoroughly.
+- Include accessibility testing in component tests.
+- Test responsive design across different screen sizes.
+- Mock API calls for isolated frontend testing.
+- Test files should be named `*.test.ts` and placed in the `./frontend/tests/` directory.
+- Mirror the source code directory structure within the `./frontend/tests/` directory.
+- For unit tests, mirror the source code directory structure within the `./frontend/tests/unit/` directory. For example, for the source file `./frontend/components/MyComponent.vue`, the corresponding test file should be `./frontend/tests/unit/components/MyComponent.test.ts`.
+- For e2e tests, mirror the source code directory structure within the `./frontend/tests/e2e/` directory. For example, for the source file `./frontend/pages/HomePage.vue`, the corresponding test file should be `./frontend/tests/e2e/pages/HomePage.test.ts`.
+- Ensure 80%+ test coverage requirement.
+
+## Guidelines for Full-Stack Development 
+
+- Ensure frontend and backend work together seamlessly.
+- Coordinate environment variables between both applications.
+- Test integration between frontend API calls and backend endpoints.
+- Maintain consistent error handling across both applications.

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2025-10-10
+
+### Added
+- Added comprehensive frontend development guidelines:
+  - Vue 3 + TypeScript framework guidelines for upcoming frontend implementation
+  - Guidelines for component architecture and accessibility compliance (WCAG 2.1 AA)
+  - Frontend testing requirements for Vitest (unit tests) and Cypress (e2e)
+  - Full-stack integration guidelines for seamless backend/frontend operation
+
+
 ## [0.6.0] - 2025-10-03
 
 ### Added
