@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Guidelines for component architecture and accessibility compliance (WCAG 2.1 AA)
   - Frontend testing requirements for Vitest (unit tests) and Cypress (e2e)
   - Full-stack integration guidelines for seamless backend/frontend operation
+- Updated README with detailed frontend specifications:
+  - Frontend technology stack (Vue 3, TypeScript, Vite, Pinia)
+  - UI components and styling with Tailwind CSS and Headless UI
+  - Progressive Web App (PWA) capabilities
+  - Modern user experience features including dark/light themes and real-time updates
+  - Enhanced security documentation with HTTPS and security headers
+  - Environment-specific frontend deployment configurations
+- Added Node.js and nvm to project prerequisites
 
 
 ## [0.6.0] - 2025-10-03

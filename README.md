@@ -9,6 +9,8 @@
 - [SQLite](https://sqlite.org/) for development database
 - [PostgreSQL](https://www.postgresql.org/) optional, for production database
 - [Redis](https://redis.io/) optional, for production rate limiting persistence
+- [nvm](https://www.nvmnode.com/) for managing multiple Node.js versions
+- [Node.js](https://github.com/nodejs/node?tab=readme-ov-file) a JavaScript runtime
 
 ## Project Architecture
 A modern, comprehensive full-stack travel planning platform with a robust Flask API backend and a modern Vue 3 frontend as well as clear separation between frontend and backend.
@@ -48,8 +50,13 @@ A modern, comprehensive full-stack travel planning platform with a robust Flask 
   ENV=testing uv run flask clean-test-db
   ```
 
-### Frontend Technologies
-TODO
+### Frontend Technologies (`./frontend/`)
+- **Framework**: Vue 3 with Composition API and TypeScript
+- **Build Tool**: Vite with optimized production builds and hot reload
+- **State**: Pinia store with persistent storage and real-time sync
+- **UI**: Tailwind CSS with Headless UI components and accessibility
+- **Testing**: Vitest (unit), Cypress (e2e), 80%+ coverage requirement
+- **PWA**: Service worker, offline support, installable app
 
 ## Features
 
@@ -87,7 +94,11 @@ TODO
         ```
 
 ### User Experience
-TODO
+- **Modern UI**: Clean, accessible interface with dark/light theme support
+- **Progressive Web App**: Installable with native app-like experience
+- **Real-time Updates**: Live data synchronization with optimistic UI updates
+- **Responsive Design**: Mobile-first with CSS Grid and Flexbox
+- **Accessibility**: WCAG 2.1 AA compliant interface
 
 ### Authentication & Security
 - **JWT Authentication**: Secure token-based authentication with refresh mechanism
@@ -96,18 +107,20 @@ TODO
 - **Input Validation**: Client and server-side validation with sanitization
 - **Protected Routes**: Frontend route guards with backend JWT verification
 - **CORS Configuration**: Controlled cross-origin resource sharing for secure API access
+- **HTTPS Enforcement**: Automatic HTTPS redirect in production
+- **Security Headers**: XSS protection, CSRF prevention, content security policy
 
 ### Environment-Specific Deployment
 
 **Development:**
 - Backend: Flask development server with debug mode
-- Frontend: TODO
+- Frontend: Vite dev server with hot reload
 - Database: SQLite for simplicity
 - Security: Relaxed for development ease
 
 **Production:**
 - Backend: Gunicorn with multiple workers, PostgreSQL, Redis
-- Frontend: TODO
+- Frontend: Static hosting with CDN, optimized builds
 - Database: PostgreSQL with connection pooling
 - Security: Enforce all security features like Redis rate limiting, HTTPS enforcement, security headers, CORS, etc.
 
