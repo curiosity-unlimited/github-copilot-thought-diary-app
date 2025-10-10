@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2025-10-10
+
 ### Added
-- Created initial `frontend` directory structure
+- Created initial `frontend` directory structure with Vue 3 and TypeScript
 - Added `.nvmrc` file specifying Node.js v24.9.0 for frontend development
+- Initialized Vite project with Vue 3 and TypeScript template
+- Added TypeScript configuration files (tsconfig.json, tsconfig.app.json, tsconfig.node.json)
+- Set up frontend directory structure with src, components, and assets folders
+- Added proper .gitignore for frontend development with Node.js
 
 ## [0.7.0] - 2025-10-10
 
